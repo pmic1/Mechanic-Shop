@@ -11,43 +11,104 @@
 <body>
     <header>
         
-        <nav class="container-fluid text-allign-center" style="top: 0;">
-            <div class="row">
-                <div class="col-md-auto">
-                    <img style="width: 15%;" src="/img/logo.png" alt="">
-                </div>
-                <div class="col">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <h1>ARMORED AUTO SHOP</h1>
-                            </div>
-                                <ul class="row">
-                                <div class="col-md-auto"><a href="about.html">Store Details</a></div>
-                                <div class="col-md-auto"><a href="services.html">Services</a></div>
-                                <div class="col-md-auto"><a href="contact.html">Contact</a></div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <nav>
+            <a href="index.html"><img style="width: 8%;" src="/img/logo.png" alt=""></a>
+            <h1>ARMORED AUTO SHOP</h1>
+            <ul class="row  link-section">
+                <div class="col-md-auto"><a class="current-page" href="index.html">Home</a></div>
+                <div class="col-md-auto"><a href="about.html">Store Details</a></div>
+                <div class="col-md-auto"><a href="services.html">Services</a></div>
+                <div class="col-md-auto"><a href="contact.html">Contact</a></div>
+            </ul>
         </nav>
     </header>
+    <div class="nav-is-dumb"></div>
     <article>
     <section id="about">
-        <h2>What We Do</h2>
-        <p>Welcome to Armored Auto Shop, your trusted partner for all your auto repair needs. We have been serving the community for years, providing high-quality automotive services.</p>
-    </section>
+        <h2>Our Inventory</h2>
+        <div id="carList"></div>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or need to schedule an appointment, feel free to contact us:</p>
-        <p>Email: <a href="mailto:info@mymechanic.com">armoredautoshop@gmail.com</a></p>
-        <p>Phone: <a href="tel:+1234567890">555-555-5555</a></p>
-    </section>
-    </article>
+        <script>
+            let cars = [
+                {
+                    "make": "Toyota",
+                    "model": "Camry",
+                    "year": 2022,
+                    "color": "Black",
+                    "features": ["Navigation", "Sunroof", "Leather Seats"],
+                    "specs": {
+                        "engine": "2.5L 4-cylinder",
+                        "transmission": "Automatic",
+                        "horsepower": 203
+                    },
+                    "image": "img/toyota-camry.png"  
+                },
+                {
+                    "make": "Honda",
+                    "model": "Civic",
+                    "year": 2021,
+                    "color": "Red",
+                    "features": ["Backup Camera", "Apple CarPlay", "Lane Keeping Assist"],
+                    "specs": {
+                        "engine": "2.0L 4-cylinder",
+                        "transmission": "CVT",
+                        "horsepower": 158
+                    },
+                    "image": "img/honda-civic.png"  
+                },
+                {
+                    "make": "Ford",
+                    "model": "Mustang",
+                    "year": 2020,
+                    "color": "Blue",
+                    "features": ["Rear-Wheel Drive", "Keyless Entry", "LED Headlights"],
+                    "specs": {
+                        "engine": "5.0L V8",
+                        "transmission": "Manual",
+                        "horsepower": 450
+                    },
+                    "image": "img/ford-mustang.png"  
+                },
+                {
+                    "make": "Chevrolet",
+                    "model": "Corvette",
+                    "year": 2022,
+                    "color": "Yellow",
+                    "features": ["Convertible", "Advanced Infotainment", "Performance Package"],
+                    "specs": {
+                        "engine": "6.2L V8",
+                        "transmission": "Automatic",
+                        "horsepower": 490
+                    },
+                    "image": "img/chevrolet-corvette.png"  
+                }
+            ];
+        
+            const carList = document.getElementById('carList');
+        
+            for (let i = 0; i < cars.length; i++) {
+                const carData = cars[i];
+                const carContainer = document.createElement('div');
+                carContainer.classList.add('carContainer');
+                carContainer.innerHTML = `
+                    <h2>${carData.make} ${carData.model}</h2>
+                    <p><strong>Year:</strong> ${carData.year}</p>
+                    <p><strong>Color:</strong> ${carData.color}</p>
+                    <p><strong>Features:</strong> ${carData.features.join(", ")}</p>
+                    <h3>Specifications</h3>
+                    <ul>
+                        <li><strong>Engine:</strong> ${carData.specs.engine}</li>
+                        <li><strong>Transmission:</strong> ${carData.specs.transmission}</li>
+                        <li><strong>Horsepower:</strong> ${carData.specs.horsepower} hp</li>
+                    </ul>
+                    <img class="carImage" src="${carData.image}" alt="${carData.make} ${carData.model}">
+                `;
+                carList.appendChild(carContainer);
+            }
+        </script>
 
-    <footer>
+
+   <footer>
         <p>&copy; 2023 Armored Auto Mechanic. All rights reserved.</p>
     </footer>
 </body>
